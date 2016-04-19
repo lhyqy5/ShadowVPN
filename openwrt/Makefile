@@ -4,14 +4,17 @@ PKG_NAME:=ShadowVPN
 PKG_VERSION:=0.2.1
 PKG_RELEASE=$(PKG_SOURCE_VERSION)
 
-PKG_SOURCE_URL:=https://github.com/clowwindy/ShadowVPN/releases/download/$(PKG_VERSION)
-PKG_SOURCE:=shadowvpn-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG-VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/lhyqy5/ShadowVPN
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_SUBDIR:=ShadowVPN
+PKG_SOURCE_VERSION:=master
 
 PKG_MAINTAINER:=clowwindy <clowwindy42@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(BUILD_VARIANT)/shadowvpn-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)/$(PKG_NAME)
 
 PKG_INSTALL:=1
 PKG_FIXUP:=autoreconf
