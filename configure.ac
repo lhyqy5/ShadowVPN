@@ -19,7 +19,9 @@ LT_INIT
 
 # Checks for header files.
 AC_HEADER_RESOLV
-AC_CHECK_HEADERS([arpa/inet.h fcntl.h netdb.h stdlib.h string.h sys/socket.h unistd.h])
+AC_CHECK_HEADERS([arpa/inet.h fcntl.h netdb.h stdlib.h string.h sys/socket.h unistd.h sodium.h])
+
+AC_CHECK_LIB(sodium,sodium_init,[],[])
 
 # from OpenVPN configure.ac
 case "$host" in
@@ -78,6 +80,8 @@ AC_ARG_ENABLE([analyze],
     [CC="clang --analyze"])
 
 AM_CONDITIONAL(STATIC, test x"$static" = x"true")
+
+AM_CONDITIONAL([HAVE_SODIUM], test x"${HAVE_SODIUM_H}"=x"1")
 
 AC_CONFIG_FILES([Makefile src/Makefile samples/Makefile])
 AC_CONFIG_SUBDIRS([libsodium])
