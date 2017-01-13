@@ -81,8 +81,8 @@ AC_ARG_ENABLE([analyze],
 
 AM_CONDITIONAL(STATIC, test x"$static" = x"true")
 
-AM_CONDITIONAL([HAVE_SODIUM], test x"${HAVE_SODIUM_H}"=x"1")
+AM_CONDITIONAL([NO_SYS_SODIUM], test x"${HAVE_SODIUM_H}"!=x"1")
 
 AC_CONFIG_FILES([Makefile src/Makefile samples/Makefile])
-AC_CONFIG_SUBDIRS([libsodium])
+AM_COND_IF([NO_SYS_SODIUM],[AC_CONFIG_SUBDIRS([libsodium])])
 AC_OUTPUT
